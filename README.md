@@ -1,6 +1,6 @@
 <!-- 🌟 Top Banner -->
 <p align="center">
-  <img src="https://res.cloudinary.com/dsga4gyw9/image/upload/v1786955614/sefat-ullah-fahad_oqtsvj.png" width="100%" alt="Sefat Ullah Fahad" />
+  <img src="https://raw.githubusercontent.com/Sefat-Ullah-Fahad/sefat-ullah-fahad/refs/heads/main/public/animated-banner.svg" width="100%" alt="Sefat Ullah Fahad" />
 </p>
 
 <!-- 👤 Typing Intro -->
