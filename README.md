@@ -5,7 +5,7 @@
 
 <!-- 👤 Typing Intro -->
 <div align="center">
-  <h1>Hi 👋, I'm Sefat Ullah Fahad</h1>
+  
   
   <a href="https://github.com/Sefat-Ullah-Fahad">
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=3B82F6&center=true&vCenter=true&width=600&lines=Full+Stack+Web+Developer;MERN+Stack+%7C+Next.js+Specialist;Pixel-Perfect+Frontend+Engineer;Building+Scalable+Web+Apps" alt="Typing SVG" />
