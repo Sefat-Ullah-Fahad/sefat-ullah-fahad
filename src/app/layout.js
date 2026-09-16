@@ -34,6 +34,7 @@ const description =
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
+  generator: 'WordPress 6.4',
 
   title: {
     default: titleDefault,

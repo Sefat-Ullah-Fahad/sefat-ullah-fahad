@@ -1,20 +1,22 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { Dancing_Script } from 'next/font/google';
+import { useState, useEffect, useRef } from "react";
+import { Dancing_Script } from "next/font/google";
 
 const dancingScript = Dancing_Script({
-  subsets: ['latin'],
-  weight: ['700'],
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["700"],
+  display: "swap",
   preload: true,
 });
 
-export default function Preloader({ onComplete }) {
+export default function Preloader({ isReady, onComplete }) {
   const [isFading, setIsFading] = useState(false);
   const dismissedRef = useRef(false);
 
   useEffect(() => {
+    if (!isReady) return;
+
     const startFade = () => {
       if (dismissedRef.current) return;
       dismissedRef.current = true;
@@ -22,18 +24,16 @@ export default function Preloader({ onComplete }) {
     };
 
     const reducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     if (reducedMotion) {
       startFade();
       return;
     }
 
-    // Handwriting draw lasts ~2.5s; then fade out. Cap as safety if animationend is missed.
-    const safety = window.setTimeout(startFade, 2600);
-    return () => window.clearTimeout(safety);
-  }, []);
+    startFade();
+  }, [isReady]);
 
   useEffect(() => {
     if (!isFading) return;
@@ -44,10 +44,10 @@ export default function Preloader({ onComplete }) {
   return (
     <div
       className={`fixed inset-0 z-[9999] flex items-center justify-center bg-brand-preloader transition-opacity duration-700 ease-in-out ${
-        isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
       onTransitionEnd={(e) => {
-        if (e.propertyName === 'opacity' && isFading) onComplete?.();
+        if (e.propertyName === "opacity" && isFading) onComplete?.();
       }}
     >
       <style jsx>{`
@@ -133,7 +133,11 @@ export default function Preloader({ onComplete }) {
       `}</style>
 
       <div className={`loader-wrap ${dancingScript.className}`}>
-        <svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" aria-label="sefat ullah fahad">
+        <svg
+          viewBox="0 0 700 150"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="sefat ullah fahad"
+        >
           <text x="350" y="75" className="stroke-text">
             sefat ullah fahad
           </text>
