@@ -131,7 +131,7 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600/20 via-pink-500/20 to-purple-800/10 blur-2xl animate-pulse-glow pointer-events-none" />
 
               <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] rounded-full p-1.5 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-900 shadow-2xl shadow-purple-950/70 overflow-hidden group">
-                <div className="w-full h-full rounded-full bg-[#0d1117] overflow-hidden relative flex items-center justify-center border border-purple-500/30">
+                <div className="w-full h-full rounded-full bg-surface overflow-hidden relative flex items-center justify-center border border-purple-500/30">
 
                   <Image
                     src="/sefat-ullah-fahad.png"
@@ -143,7 +143,7 @@ export default function Hero() {
                     className="object-cover object-center filter saturate-105 contrast-105 transition-transform duration-700 group-hover:scale-110"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                 </div>
               </div>
 

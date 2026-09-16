@@ -6,6 +6,7 @@ import { FaLinkedin } from 'react-icons/fa6';
 import { HiOutlineBars3, HiOutlineXMark } from 'react-icons/hi2';
 
 const navLinks = [
+  { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Experience', href: '#experience' },
   { name: 'Education', href: '#education' },
@@ -21,36 +22,62 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
+  // Background blur / shadow on scroll
   useEffect(() => {
     let ticking = false;
 
-    const updateFromScroll = () => {
+    const updateScrollState = () => {
       setIsScrolled(window.scrollY > 50);
-
-      const sections = document.querySelectorAll('section[id]');
-      let currentSectionId = '';
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 150) {
-          currentSectionId = `#${section.getAttribute('id')}`;
-        }
-      });
-
-      setActiveSection(currentSectionId);
       ticking = false;
     };
 
     const handleScroll = () => {
       if (!ticking) {
         ticking = true;
-        requestAnimationFrame(updateFromScroll);
+        requestAnimationFrame(updateScrollState);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    updateFromScroll();
+    updateScrollState();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Reliable, smooth active-section tracking with IntersectionObserver
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    if (!sections.length) return;
+
+    const visibleSections = new Map();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleSections.set(entry.target.id, entry.intersectionRatio);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        });
+
+        if (visibleSections.size > 0) {
+          // Pick the section with the largest visible ratio (most "in view")
+          const topId = [...visibleSections.entries()].sort(
+            (a, b) => b[1] - a[1]
+          )[0][0];
+          setActiveSection(`#${topId}`);
+        }
+      },
+      {
+        // Treat a section as "active" once it clears the fixed header,
+        // and stop counting it once it's mostly scrolled past.
+        rootMargin: '-96px 0px -55% 0px',
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -99,7 +126,7 @@ export default function Header() {
           isMobileMenuOpen ? 'z-[70]' : 'z-50'
         } ${
           isScrolled
-            ? 'bg-[#07090e]/80 backdrop-blur-md border-b border-white/10 py-3 shadow-lg'
+            ? 'bg-background/80 backdrop-blur-md border-b border-white/10 py-3 shadow-lg'
             : 'bg-transparent py-5'
         }`}
       >
@@ -165,11 +192,22 @@ export default function Header() {
                   aria-controls="mobile-side-menu"
                   className="lg:hidden relative z-[70] text-white p-1 focus:outline-none"
                 >
-                  {isMobileMenuOpen ? (
-                    <HiOutlineXMark className="w-7 h-7 text-pink-400" />
-                  ) : (
-                    <HiOutlineBars3 className="w-7 h-7" />
-                  )}
+                  <span className="relative block w-7 h-7">
+                    <HiOutlineBars3
+                      className={`w-7 h-7 absolute inset-0 transition-all duration-300 ease-out ${
+                        isMobileMenuOpen
+                          ? 'opacity-0 rotate-90 scale-75'
+                          : 'opacity-100 rotate-0 scale-100'
+                      }`}
+                    />
+                    <HiOutlineXMark
+                      className={`w-7 h-7 absolute inset-0 text-pink-400 transition-all duration-300 ease-out ${
+                        isMobileMenuOpen
+                          ? 'opacity-100 rotate-0 scale-100'
+                          : 'opacity-0 -rotate-90 scale-75'
+                      }`}
+                    />
+                  </span>
                 </button>
               </div>
             </div>
@@ -179,7 +217,7 @@ export default function Header() {
 
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-500 ease-out ${
           isMobileMenuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -199,7 +237,7 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed inset-0 z-[65] h-[100dvh] w-full lg:hidden flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed inset-0 z-[65] h-[100dvh] w-full lg:hidden flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
@@ -235,13 +273,15 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScrollToSection(e, link.href)}
-                className={`px-4 py-3.5 rounded-2xl text-base font-mono transition-all duration-200 ${
+                className={`nav-item-animate px-4 py-3.5 rounded-2xl text-base font-mono transition-colors duration-200 ${
+                  isMobileMenuOpen ? 'menu-open' : ''
+                } ${
                   isActive
                     ? 'text-pink-300 bg-white/10 font-bold border border-pink-500/30 shadow-[0_0_24px_rgba(236,72,153,0.15)]'
                     : 'text-white/90 hover:text-pink-200 hover:bg-white/5 border border-transparent'
                 }`}
                 style={{
-                  transitionDelay: isMobileMenuOpen ? `${index * 30}ms` : '0ms',
+                  animationDelay: isMobileMenuOpen ? `${120 + index * 45}ms` : '0ms',
                 }}
               >
                 {link.name}
@@ -285,8 +325,25 @@ export default function Header() {
           }
         }
 
+        .nav-item-animate {
+          opacity: 0;
+          transform: translateX(24px);
+        }
+
+        .nav-item-animate.menu-open {
+          animation: navItemIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes navItemIn {
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-          .header-animate-in {
+          .header-animate-in,
+          .nav-item-animate {
             animation: none !important;
             opacity: 1 !important;
             transform: none !important;

@@ -74,7 +74,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative py-24 lg:py-32 bg-[#07090e] border-t border-slate-900 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-background border-t border-slate-900 overflow-hidden"
     >
       <div 
         className="absolute inset-0 z-0 opacity-[0.15]" 

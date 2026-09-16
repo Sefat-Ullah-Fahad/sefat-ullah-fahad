@@ -43,7 +43,7 @@ export default function Preloader({ onComplete }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-r from-purple-700 to-pink-300 transition-opacity duration-700 ease-in-out ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-brand-preloader transition-opacity duration-700 ease-in-out ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       onTransitionEnd={(e) => {
@@ -86,7 +86,7 @@ export default function Preloader({ onComplete }) {
         }
 
         .fill-text {
-          fill: #d4537e;
+          fill: var(--brand-pink-fill);
           opacity: 0;
           animation: fadeIn 2.5s ease-in-out forwards;
         }

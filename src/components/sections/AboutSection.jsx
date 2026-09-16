@@ -79,7 +79,7 @@ export default function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-24 lg:py-32 bg-[#07090e]/75 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
+      className="relative py-24 lg:py-32 bg-background/75 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
     >
       <div className="absolute inset-0 bg-circuit-grid opacity-45 pointer-events-none" />
       <div className="absolute inset-0 bg-dots-pattern opacity-20 pointer-events-none" />

@@ -141,7 +141,7 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative py-24 lg:py-32 bg-[#07090e]/85 border-t border-slate-900 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden"
     >
       <div className="absolute inset-0 bg-graph-grid opacity-35 pointer-events-none" />
       <div className="absolute inset-0 bg-isometric-grid opacity-20 pointer-events-none" />

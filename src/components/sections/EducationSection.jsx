@@ -77,7 +77,7 @@ export default function EducationSection() {
     <section
       ref={sectionRef}
       id="education"
-      className="relative py-24 lg:py-32 bg-[#07090e]/85 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
+      className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
     >
       <div className="absolute inset-0 bg-constellation opacity-35 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.05)_0%,transparent_70%)] pointer-events-none" />

@@ -167,7 +167,7 @@ export default function ServicesSection() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative py-24 lg:py-32 bg-[#07090e]/90 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
+      className="relative py-24 lg:py-32 bg-background/90 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
     >
       <div className="absolute inset-0 bg-flow-matrix opacity-25 pointer-events-none" />
 

@@ -92,7 +92,7 @@ export default function TimelineSection() {
     <section
       ref={sectionRef}
       id="timeline"
-      className="relative py-24 lg:py-32 bg-[#07090e]/85 border-t border-slate-900 overflow-hidden"
+      className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden"
     >
       {/* bg-fixed removed — was forcing a full repaint on every scroll frame on mobile */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(59,130,246,0.45)_1.5px,transparent_1.5px)] bg-[size:28px_28px] pointer-events-none opacity-60" />

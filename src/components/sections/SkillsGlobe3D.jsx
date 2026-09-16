@@ -173,12 +173,35 @@ export default function SkillsGlobe3D({
     const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
-    let animationFrameId;
+    let animationFrameId = null;
+    let isLoopRunning = false;
     let arcPulsePhase = 0;
+    let lastFrameTime = 0;
+    const FRAME_INTERVAL = 1000 / 30;
 
     const isVisibleRef = { current: true };
+
+    const stopLoop = () => {
+      isLoopRunning = false;
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    const startLoop = () => {
+      if (isLoopRunning) return;
+      isLoopRunning = true;
+      lastFrameTime = 0;
+      animationFrameId = requestAnimationFrame(render);
+    };
+
     const visibilityObserver = new IntersectionObserver(
-      ([entry]) => { isVisibleRef.current = entry.isIntersecting; },
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) startLoop();
+        else stopLoop();
+      },
       { threshold: 0.01 }
     );
     if (containerRef.current) visibilityObserver.observe(containerRef.current);
@@ -186,7 +209,7 @@ export default function SkillsGlobe3D({
     const handleResize = () => {
       if (!containerRef.current || !canvas) return;
       const rect = containerRef.current.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       canvas.style.width = `${rect.width}px`;
@@ -203,14 +226,16 @@ export default function SkillsGlobe3D({
     let cachedHaloSelect = null;
     let lastRenderState = "";
 
-    const render = () => {
-      if (!canvas || !ctx) return;
-      if (!isVisibleRef.current) {
-        animationFrameId = requestAnimationFrame(render);
-        return;
-      }
+    const render = (timestamp = 0) => {
+      if (!isLoopRunning || !canvas || !ctx) return;
+      animationFrameId = requestAnimationFrame(render);
 
-      const dpr = window.devicePixelRatio || 1;
+      if (!isVisibleRef.current) return;
+
+      if (timestamp - lastFrameTime < FRAME_INTERVAL) return;
+      lastFrameTime = timestamp;
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const width = canvas.width / dpr;
       const height = canvas.height / dpr;
       const centerX = width / 2;
@@ -246,7 +271,9 @@ export default function SkillsGlobe3D({
         cachedHaloSelect.addColorStop(1, 'rgba(236, 72, 153, 0)');
       }
 
-      ctx.fillStyle = '#07090e';
+      ctx.fillStyle = getComputedStyle(document.documentElement)
+        .getPropertyValue('--background')
+        .trim() || '#07090e';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.save();
@@ -467,13 +494,12 @@ export default function SkillsGlobe3D({
       });
 
       ctx.restore();
-      animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    startLoop();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      stopLoop();
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
     };

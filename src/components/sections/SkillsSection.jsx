@@ -191,7 +191,7 @@ export default function SkillsSection() {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative py-24 lg:py-32 bg-[#07090e]/85 border-t border-slate-900 overflow-hidden backdrop-blur-[2px]"
+      className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden backdrop-blur-[2px]"
     >
       <div className="absolute inset-0 bg-graph-matrix opacity-40 pointer-events-none" />
       <div className="absolute inset-0 bg-blueprint-grid opacity-25 pointer-events-none" />

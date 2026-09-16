@@ -86,7 +86,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative bg-[#05070a] pt-20 pb-10 border-t border-slate-900 overflow-hidden"
+      className="relative bg-surface-footer pt-20 pb-10 border-t border-slate-900 overflow-hidden"
     >
       <div className="absolute inset-0 bg-graph-matrix opacity-20 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[1px] bg-gradient-to-r from-transparent via-pink-500/50 to-transparent" />

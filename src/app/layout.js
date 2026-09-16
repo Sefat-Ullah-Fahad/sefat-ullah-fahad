@@ -1,13 +1,15 @@
 import { Gelasio, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
+import dynamic from 'next/dynamic';
 import ClientLayout from '../components/ClientLayout';
 import Header from '@/components/sheard/Navbar';
-import Footer from '@/components/sheard/Footer';
+
+const Footer = dynamic(() => import('@/components/sheard/Footer'));
 
 const gelasio = Gelasio({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
   style: ['normal'],
   variable: '--font-sans',
   display: 'swap',
@@ -16,7 +18,7 @@ const gelasio = Gelasio({
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-mono',
   display: 'swap',
   preload: true,
@@ -236,7 +238,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${gelasio.className} ${gelasio.variable} ${jetbrainsMono.variable} bg-[#07090e] text-[#e2e8f0] antialiased selection:bg-purple-500/30 selection:text-pink-300 min-h-screen overflow-x-hidden`}
+        className={`${gelasio.className} ${gelasio.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased min-h-screen overflow-x-hidden`}
       >
         <a
           href="#hero"

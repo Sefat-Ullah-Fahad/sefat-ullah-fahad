@@ -147,7 +147,7 @@ export default function CurrentFocusSection() {
     <section
       ref={sectionRef}
       id="focus"
-      className="relative py-24 lg:py-32 bg-[#07090e]/85 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
+      className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
     >
       <div className="absolute inset-0 bg-blueprint-grid opacity-30 pointer-events-none" />
       <div className="absolute inset-0 bg-flow-matrix opacity-25 pointer-events-none" />

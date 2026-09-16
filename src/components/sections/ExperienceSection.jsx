@@ -80,13 +80,13 @@ export default function ExperienceSection() {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative py-24 lg:py-32 bg-[#07090e]/85 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
+      className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
     >
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(124,58,237,0.15)_1px,transparent_1px)] bg-[size:100%_40px] bg-fixed pointer-events-none opacity-80" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(236,72,153,0.08)_1px,transparent_1px)] bg-[size:40px_100%] bg-fixed pointer-events-none opacity-80" />
 
-      <div className="absolute top-1/3 right-10 w-[500px] h-[500px] bg-[#5B21B6]/15 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#DB2777]/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-[500px] h-[500px] bg-[#5B21B6]/90 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#DB2777]/90 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

@@ -1,47 +1,110 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07090e;
+  --foreground: #e2e8f0;
+  --surface: #0d1117;
+  --surface-footer: #05070a;
+
+  --brand-purple: #5b21b6;
+  --brand-purple-hover: #6d28d9;
+  --brand-purple-light: #7c3aed;
+  --brand-purple-violet: #8b5cf6;
+  --brand-purple-soft: #a78bfa;
+  --brand-purple-pale: #c4b5fd;
+
+  --brand-pink: #db2777;
+  --brand-pink-hot: #ec4899;
+  --brand-pink-light: #f472b6;
+  --brand-pink-rose: #e11d48;
+  --brand-pink-fill: #d4537e;
+  --brand-pink-pale: #f9a8d4;
+
+  --gradient-brand: linear-gradient(
+    135deg,
+    var(--brand-purple) 0%,
+    var(--brand-purple) 60%,
+    var(--brand-pink) 100%
+  );
+  --gradient-brand-hover: linear-gradient(
+    135deg,
+    var(--brand-purple-hover) 0%,
+    var(--brand-purple) 50%,
+    var(--brand-pink-rose) 100%
+  );
+  --gradient-brand-subtle: linear-gradient(
+    135deg,
+    rgb(91 33 182 / 0.22) 0%,
+    rgb(91 33 182 / 0.22) 60%,
+    rgb(219 39 119 / 0.22) 100%
+  );
+  --gradient-text: linear-gradient(
+    135deg,
+    var(--brand-purple-soft) 0%,
+    var(--brand-purple-violet) 45%,
+    var(--brand-pink) 100%
+  );
+  --gradient-text-glow: linear-gradient(
+    135deg,
+    var(--brand-purple-pale) 0%,
+    var(--brand-purple-soft) 40%,
+    var(--brand-pink) 85%,
+    var(--brand-pink-light) 100%
+  );
+  --gradient-preloader: linear-gradient(
+    to right,
+    var(--brand-purple),
+    var(--brand-pink-pale)
+  );
+  --gradient-scrollbar: linear-gradient(
+    180deg,
+    var(--brand-purple) 0%,
+    var(--brand-purple) 60%,
+    var(--brand-pink) 100%
+  );
+  --gradient-scrollbar-hover: linear-gradient(
+    180deg,
+    var(--brand-purple-hover) 0%,
+    var(--brand-purple-light) 60%,
+    #f43f5e 100%
+  );
+
+  --glow-brand: 0 0 35px -5px rgb(91 33 182 / 0.45),
+    0 0 20px -5px rgb(219 39 119 / 0.35);
+  --glow-brand-lg: 0 0 60px -10px rgb(91 33 182 / 0.5),
+    0 0 40px -5px rgb(219 39 119 / 0.4);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-gelasio); /* এখানে Geist Sans-এর জায়গায় Gelasio সেট করা হয়েছে */
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-footer: var(--surface-footer);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-purple-hover: var(--brand-purple-hover);
+  --color-brand-purple-light: var(--brand-purple-light);
+  --color-brand-purple-violet: var(--brand-purple-violet);
+  --color-brand-purple-soft: var(--brand-purple-soft);
+  --color-brand-purple-pale: var(--brand-purple-pale);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-pink-hot: var(--brand-pink-hot);
+  --color-brand-pink-light: var(--brand-pink-light);
+  --color-brand-pink-fill: var(--brand-pink-fill);
+  --color-brand-pink-pale: var(--brand-pink-pale);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-gelasio), serif; /* Arial বদলে Gelasio দেওয়া হয়েছে */
-}
-
-
-
-
-
-@import "tailwindcss";
 
 @layer base {
   :root {
-    --font-sans: 'Gelasio', Georgia, Cambria, 'Times New Roman', serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --font-display: 'Gelasio', Georgia, Cambria, serif;
+    --font-display: var(--font-sans), Georgia, Cambria, serif;
   }
 
   body {
-    font-family: var(--font-sans);
-    background-color: #07090e;
-    color: #e2e8f0;
+    font-family: var(--font-sans), Georgia, Cambria, 'Times New Roman', serif;
+    background-color: var(--background);
+    color: var(--foreground);
     overflow-x: hidden;
   }
 
@@ -61,6 +124,11 @@ body {
     white-space: nowrap;
     border-width: 0;
   }
+
+  ::selection {
+    background-color: rgb(168 85 247 / 0.3);
+    color: var(--brand-pink-pale);
+  }
 }
 
 /* Custom scrollbar with brand gradient track */
@@ -68,14 +136,14 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #07090e;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #5B21B6 0%, #5B21B6 60%, #DB2777 100%);
+  background: var(--gradient-scrollbar);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #6D28D9 0%, #7C3AED 60%, #F43F5E 100%);
+  background: var(--gradient-scrollbar-hover);
 }
 
 /* ============================================================
@@ -304,43 +372,49 @@ body {
   animation: graphPulse 6s ease-in-out infinite;
 }
 
-/* User's Exact Main Brand Gradient: linear-gradient(135deg, #5B21B6 0%, #5B21B6 60%, #DB2777 100%) */
+/* User's Exact Main Brand Gradient */
 .bg-brand-gradient {
-  background: linear-gradient(135deg, #5B21B6 0%, #5B21B6 60%, #DB2777 100%);
+  background: var(--gradient-brand);
 }
 
 .bg-brand-gradient-hover:hover {
-  background: linear-gradient(135deg, #6D28D9 0%, #5B21B6 50%, #E11D48 100%);
+  background: var(--gradient-brand-hover);
 }
 
 .bg-brand-gradient-subtle {
-  background: linear-gradient(135deg, rgba(91, 33, 182, 0.22) 0%, rgba(91, 33, 182, 0.22) 60%, rgba(219, 39, 119, 0.22) 100%);
+  background: var(--gradient-brand-subtle);
+}
+
+.bg-brand-preloader {
+  background: var(--gradient-preloader);
 }
 
 .text-brand-gradient {
-  background: linear-gradient(135deg, #a78bfa 0%, #8B5CF6 45%, #DB2777 100%);
+  background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .text-brand-gradient-glow {
-  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 40%, #DB2777 85%, #f472b6 100%);
+  background: var(--gradient-text-glow);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 16px rgba(219, 39, 119, 0.45));
+  background-clip: text;
+  filter: drop-shadow(0 0 16px rgb(219 39 119 / 0.45));
 }
 
 .border-brand-gradient {
-  border-image: linear-gradient(135deg, #5B21B6 0%, #5B21B6 60%, #DB2777 100%) 1;
+  border-image: var(--gradient-brand) 1;
 }
 
 /* High-Impact Glow Effects */
 .glow-brand {
-  box-shadow: 0 0 35px -5px rgba(91, 33, 182, 0.45), 0 0 20px -5px rgba(219, 39, 119, 0.35);
+  box-shadow: var(--glow-brand);
 }
 
 .glow-brand-lg {
-  box-shadow: 0 0 60px -10px rgba(91, 33, 182, 0.5), 0 0 40px -5px rgba(219, 39, 119, 0.4);
+  box-shadow: var(--glow-brand-lg);
 }
 
 /* Interactive Shimmer Button Effect */
@@ -480,6 +554,45 @@ body {
   .animate-float-slow {
     animation: none !important;
   }
+}
+
+/* Mobile: pause infinite ambient animations (patterns stay visible, static) */
+@media (max-width: 767px) {
+  .bg-grid-pattern::before,
+  .bg-circuit-grid::before,
+  .bg-hex-grid::before,
+  .bg-dots-pattern::before,
+  .bg-graph-grid::before,
+  .bg-blueprint-grid::before,
+  .bg-graph-matrix::before,
+  .bg-isometric-grid::before,
+  .bg-flow-matrix::before,
+  .bg-constellation::before,
+  .bg-wireframe-net::before,
+  .bg-radial-waves,
+  .animate-scanline,
+  .animate-radar-sweep,
+  .animate-graph-pulse {
+    animation: none !important;
+  }
+
+  .animate-ping {
+    animation-duration: 2.5s !important;
+  }
+
+  .backdrop-blur-md,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-sm {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+}
+
+/* Defer off-screen section paint until near viewport */
+.section-perf {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
 }
 
 /* Lenis Recommended CSS for Perfect Smoothness */

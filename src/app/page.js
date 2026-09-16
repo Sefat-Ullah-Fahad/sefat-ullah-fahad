@@ -3,7 +3,7 @@ import Hero from '../components/sections/Hero';
 
 const sectionFallback = (minHeight = '480px') => (
   <div
-    className="w-full bg-[#07090e] border-t border-slate-900/50"
+    className="w-full bg-background border-t border-slate-900/50"
     style={{ minHeight }}
     aria-hidden="true"
   />
@@ -48,15 +48,33 @@ export default function Page() {
   return (
     <div className="relative min-h-screen">
       <Hero />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <EducationSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <CurrentFocusSection />
-      <TimelineSection />
-      <ContactSection />
+      <div className="section-perf">
+        <AboutSection />
+      </div>
+      <div className="section-perf">
+        <SkillsSection />
+      </div>
+      <div className="section-perf">
+        <ExperienceSection />
+      </div>
+      <div className="section-perf">
+        <EducationSection />
+      </div>
+      <div className="section-perf">
+        <ProjectsSection />
+      </div>
+      <div className="section-perf">
+        <ServicesSection />
+      </div>
+      <div className="section-perf">
+        <CurrentFocusSection />
+      </div>
+      <div className="section-perf">
+        <TimelineSection />
+      </div>
+      <div className="section-perf">
+        <ContactSection />
+      </div>
     </div>
   );
 }
