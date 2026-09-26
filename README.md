@@ -17,11 +17,11 @@
 
 ## 🚀 About Me
 
-> **"Hi, I'm Sefat ullah Fahad, a passionate Full-Stack Web Developer. I love building fast, scalable, and user-friendly web applications from scratch. As a tech-agnostic developer, I adapt quickly and use the best tools, frameworks, and technologies required to turn your ideas into clean, efficient code!"**
+Hi, I'm Sefat Ullah Fahad, a Full-Stack Web Developer. I love building fast, scalable, and user-friendly web applications from scratch. As a tech-agnostic developer, I adapt quickly and use the best tools, frameworks, and technologies required to turn ideas into clean, efficient code.
 
-I am a Full-Stack Web Developer and Accountant currently managing dual responsibilities at @Exprovia. Balancing the logic of clean code with the precision of financial data has allowed me to develop a unique problem-solving mindset. 
+I currently work at Exprovia, where I build and maintain full-stack web applications and client CMS platforms. Balancing precision with creativity has helped me develop a strong problem-solving mindset.
 
-My development approach is highly adaptive—I build fast, scalable, and secure web applications, choosing the best tools and technologies for each project's unique needs. I thoroughly enjoy crafting custom backend APIs, optimizing databases, and turning complex logic into smooth user experiences. 
+My development approach is highly adaptive — I build fast, scalable, and secure web applications, choosing the best tools and technologies for each project's unique needs. I thoroughly enjoy crafting custom backend APIs, optimizing databases, and turning complex logic into smooth user experiences.
 
 Driven by a passion for technology and management, my future goal is to bridge the gap between software engineering and business operations, building high-impact tech solutions that solve real-world problems.
 
