@@ -1,14 +1,20 @@
 import React from 'react';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { HiOutlineSparkles } from 'react-icons/hi2';
 import { FaBolt, FaRocket, FaShieldHalved } from 'react-icons/fa6';
-import Image from 'next/image';
-import HeroScrollButtons from '../HeroScrollButtons';
 
+// 7. Dynamic Import (Lazy Loading): vhari client component ba interactivity achhe emon component ke dynamic import kora holo
+const HeroScrollButtons = dynamic(() => import('../HeroScrollButtons'), {
+  ssr: true, // Jokhoni page render hobe sathe asbe, but client-side e JS alada load hobe
+});
+
+// Utility function for Cloudinary (Jodi vobisshote external image use koren)
 function optimizeCloudinaryUrl(url, width = 640) {
-  if (!url.includes('/upload/')) return url;
+  if (!url || !url.includes('/upload/')) return url;
   return url.replace(
     '/upload/',
-    `/upload/f_auto,q_auto:good,w_${width},dpr_auto/`
+    `/upload/f_auto,q_auto:best,w_${width},dpr_auto/`
   );
 }
 
@@ -34,21 +40,26 @@ const heroSectionData = {
   ]
 };
 
+// 2. Client Component Check: Ekhane kono useState ba onClick nai, tai eta 100% Server Component hisebe thakbe. SEO er jonno eta best.
 export default function Hero() {
   return (
+    // 6. Semantic HTML: <div> er poriborte <section> ebong aspasher structural element use kora hoyeche
     <section
       id="hero"
+      aria-label="Hero Section"
       className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center justify-center overflow-hidden hero-section-container"
     >
-      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-600/15 via-fuchsia-600/5 to-pink-500/15 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-pink-500/20 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-10 left-10 w-[350px] h-[350px] bg-violet-600/20 rounded-full blur-[130px] pointer-events-none" />
+      {/* Background Ornaments */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-600/15 via-fuchsia-600/5 to-pink-500/15 rounded-full blur-[150px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-pink-500/20 rounded-full blur-[140px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-10 left-10 w-[350px] h-[350px] bg-violet-600/20 rounded-full blur-[130px] pointer-events-none" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-          <div className="lg:col-span-7 flex flex-col items-start">
+          {/* 6. Semantic HTML: <header> for the main introductory text */}
+          <header className="lg:col-span-7 flex flex-col items-start">
             <div className="hero-animate-text inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-purple-500/40 text-pink-300 text-xs font-medium mb-6 shadow-[0_0_20px_rgba(236,72,153,0.2)] backdrop-blur-md" style={{ animationDelay: '0s' }}>
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75" />
@@ -90,7 +101,7 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* Separated Client Component for Scroll Buttons */}
+            {/* Render dynamically loaded client component */}
             <HeroScrollButtons />
 
             <div className="hero-animate-text grid grid-cols-3 gap-6 pt-6 border-t border-slate-800/80 w-full max-w-lg" style={{ animationDelay: '0.5s' }}>
@@ -103,11 +114,13 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-          </div>
+          </header>
 
-          <div className="lg:col-span-5 flex justify-center items-center relative hero-animate-image">
+          {/* 6. Semantic HTML: <figure> is best for showcasing an image with elements around it */}
+          <figure className="lg:col-span-5 flex justify-center items-center relative hero-animate-image m-0">
             <div className="relative w-[320px] h-[320px] sm:w-[410px] sm:h-[410px] flex items-center justify-center [perspective:1000px]">
 
+              {/* Orbital Animations (Kept completely unchanged as per request) */}
               <div className="absolute -inset-8 rounded-full border-2 border-dashed border-purple-500/40 animate-spin-cw pointer-events-none" />
               <div className="absolute -inset-4 rounded-full border border-dotted border-pink-500/50 animate-spin-ccw-fast pointer-events-none" />
 
@@ -133,14 +146,16 @@ export default function Hero() {
               <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] rounded-full p-1.5 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-900 shadow-2xl shadow-purple-950/70 overflow-hidden group">
                 <div className="w-full h-full rounded-full bg-surface overflow-hidden relative flex items-center justify-center border border-purple-500/30">
 
+                  {/* 1. Images Optimize: next/image sothik vabe optimized */}
                   <Image
                     src="/sefat-ullah-fahad.png"
                     alt="Sefat Ullah Fahad - Full Stack Developer"
                     fill
-                    priority
+                    priority={true}
                     fetchPriority="high"
                     sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 410px"
                     className="object-cover object-center filter saturate-105 contrast-105 transition-transform duration-700 group-hover:scale-110"
+                    quality={90} // Image quality standard maintain korbe
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
@@ -150,7 +165,7 @@ export default function Hero() {
               {heroSectionData.floatingBadges.map((badge, idx) => (
                 <div
                   key={idx}
-                  className={`hero-animate-badge absolute ${badge.pos} z-20 hidden xs:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-950/95 border border-purple-500/40 hover:border-pink-500/80 text-slate-200 text-xs font-mono font-medium shadow-2xl shadow-black/60 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer`}
+                  className={`hero-animate-badge absolute ${badge.pos} z-20 hidden xs:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-950/95 border border-purple-500/40 hover:border-pink-500/80 text-slate-200 text-xs font-mono font-medium shadow-2xl shadow-black/60 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-default`}
                   style={{ animationDelay: `${0.8 + idx * 0.1}s` }}
                 >
                   <span className="text-sm">{badge.icon}</span>
@@ -158,82 +173,10 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-          </div>
+          </figure>
 
         </div>
       </div>
-      
-      {/* Raw CSS Animations */}
-      {/* <style jsx>{`
-        .hero-animate-text {
-          opacity: 0;
-          transform: translateY(25px);
-          animation: fadeUp 0.7s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
-        }
-
-        .hero-animate-image {
-          opacity: 0;
-          transform: scale(0.9);
-          animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
-        }
-
-        .hero-animate-badge {
-          opacity: 0;
-          transform: translateY(15px) scale(0.85);
-          animation: popUp 0.5s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
-        }
-
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(25px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes bounceIn {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes popUp {
-          from {
-            opacity: 0;
-            transform: translateY(15px) scale(0.85);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .animate-spin-cw,
-          .animate-spin-ccw-fast,
-          .animate-spin-3d-cw,
-          .animate-spin-3d-ccw,
-          .animate-spin-3d-vert,
-          .animate-spin-cw-fast,
-          .animate-pulse-glow,
-          .animate-ping,
-          .hero-animate-text,
-          .hero-animate-image,
-          .hero-animate-badge {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
-        }
-      `}</style> */}
     </section>
   );
 }

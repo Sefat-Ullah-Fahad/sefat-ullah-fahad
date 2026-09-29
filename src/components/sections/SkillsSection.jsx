@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import {
   SiTypescript,
   SiReact,
@@ -35,24 +34,12 @@ import {
   HiOutlineSparkles,
   HiOutlineMagnifyingGlass,
   HiOutlineSquares2X2,
-  HiOutlineGlobeAsiaAustralia,
   HiOutlineCube,
   HiOutlineShieldCheck,
   HiOutlineCursorArrowRays,
   HiOutlineCodeBracket,
   HiOutlineBolt
 } from 'react-icons/hi2';
-
-// PERF: dynamic import with loading skeleton added for better LCP
-const SkillsGlobe3D = dynamic(() => import('./SkillsGlobe3D'), { 
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[450px] sm:h-[540px] flex flex-col items-center justify-center bg-slate-900/50 rounded-[2rem] border border-purple-500/20 animate-pulse">
-      <HiOutlineGlobeAsiaAustralia className="w-8 h-8 text-purple-400/50 mb-3" />
-      <span className="font-mono text-xs text-slate-400">Loading 3D Universe...</span>
-    </div>
-  )
-});
 
 const skillsSectionData = [
   { name: 'HTML5', category: 'frontend', icon: 'Code', level: 'Advanced', description: 'Semantic markup, accessibility (a11y), SEO-friendly structure', popular: true },
@@ -137,8 +124,7 @@ const skillIconMap = {
 export default function SkillsSection() {
   const [activeTab, setActiveTab] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState('sphere3d');
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [activeSkill, setActiveSkill] = useState(null);
 
   const sectionRef = useRef(null);
 
@@ -159,10 +145,9 @@ export default function SkillsSection() {
   });
 
   useEffect(() => {
-    // Raw JS Intersection Observer replacing GSAP
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -8% 0px', // 'top 92%' এর মতো কাজ করবে
+      rootMargin: '0px 0px -8% 0px',
       threshold: 0.1,
     };
 
@@ -171,8 +156,7 @@ export default function SkillsSection() {
         if (entry.isIntersecting) {
           const cards = sectionRef.current.querySelectorAll('.skill-badge-card');
           cards.forEach((card, index) => {
-            // GSAP এর stagger: 0.03 এর হুবহু কাজ
-            card.style.transitionDelay = `${index * 0.03}s`;
+            card.style.transitionDelay = `${index * 0.02}s`;
             card.classList.add('animate-skill-in');
           });
           observer.unobserve(entry.target);
@@ -185,7 +169,7 @@ export default function SkillsSection() {
     }
 
     return () => observer.disconnect();
-  }, [activeTab, searchQuery, viewMode]);
+  }, [activeTab, searchQuery]);
 
   return (
     <section
@@ -200,7 +184,6 @@ export default function SkillsSection() {
       <div className="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-[#DB2777]/15 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-800/80">
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -215,13 +198,15 @@ export default function SkillsSection() {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-8">
-
           <div className="flex flex-wrap gap-2 w-full lg:w-auto">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
-                onClick={() => setActiveTab(cat.id)}
+                onClick={() => {
+                  setActiveTab(cat.id);
+                  setActiveSkill(null);
+                }}
                 className={`skill-badge-card btn-shimmer flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono transition-all duration-200 cursor-pointer ${
                   activeTab === cat.id
                     ? 'bg-brand-gradient text-white font-bold shadow-md shadow-pink-500/30 scale-105'
@@ -248,39 +233,84 @@ export default function SkillsSection() {
           </div>
         </div>
 
-        <div className="space-y-12">
-          <div className="p-2 sm:p-4 rounded-3xl bg-slate-950/85 border border-purple-500/30 backdrop-blur-xl shadow-2xl relative overflow-hidden">
-            <SkillsGlobe3D
-              skills={skillsSectionData}
-              selectedCategory={activeTab}
-              onSelectSkill={(skill) => setHoveredSkill(skill)}
-              hoveredSkill={hoveredSkill}
-              skillIconMap={skillIconMap}
-            />
+        {/* Optimized Grid view with Hover Effects from previous Globe Component */}
+        <div className="p-4 sm:p-6 rounded-3xl bg-slate-950/85 border border-purple-500/30 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin">
+            {filteredSkills.map((s) => {
+              const isSelected = activeSkill?.name === s.name;
+              const Icon = skillIconMap[s.name] || HiOutlineCube;
+              return (
+                <button
+                  key={s.name}
+                  type="button"
+                  onClick={() => setActiveSkill(s)}
+                  className={`skill-badge-card text-left p-3 rounded-xl transition-all cursor-pointer flex items-center gap-3 group ${
+                    isSelected 
+                      ? 'bg-brand-gradient text-white font-semibold shadow-lg shadow-pink-500/30 scale-[1.02] border border-pink-400/50' 
+                      : 'bg-slate-900/70 border border-slate-800/80 hover:border-purple-500/50 text-slate-300 hover:text-white'
+                  }`}
+                >
+                  <div className={`p-2 rounded-lg flex-shrink-0 ${isSelected ? 'bg-white/20 text-white' : 'bg-purple-950/60 text-purple-400 group-hover:text-pink-300'}`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-sm font-semibold truncate leading-tight">{s.name}</div>
+                    <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mt-0.5">
+                      <span className="capitalize truncate opacity-80">{s.category}</span>
+                      <span className={isSelected ? 'text-white/90 font-bold' : 'text-pink-400'}>{s.level}</span>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
-        </div>
 
+          {/* Active Skill Details Card */}
+          {activeSkill && (
+            <div className="mt-6 p-5 rounded-2xl bg-slate-900/95 border border-pink-500/60 backdrop-blur-xl shadow-xl flex flex-col sm:flex-row sm:items-center gap-4 animate-fadeIn">
+              <div className="p-3.5 rounded-2xl bg-brand-gradient text-white shadow-lg">
+                {React.createElement(skillIconMap[activeSkill.name] || HiOutlineCube, { className: 'w-7 h-7' })}
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <h4 className="text-lg font-display font-bold text-white">{activeSkill.name}</h4>
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-purple-950 border border-purple-500/40 text-pink-300">{activeSkill.level}</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-slate-800 text-slate-300 capitalize">{activeSkill.category}</span>
+                </div>
+                <p className="text-sm text-slate-300">{activeSkill.description}</p>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Raw CSS Animation replacing GSAP */}
       <style jsx>{`
         .skill-badge-card {
           opacity: 0;
-          transform: translateY(16px) scale(0.92);
-          transition: opacity 0.35s ease-out,
-                      transform 0.35s ease-out;
+          transform: translateY(12px);
+          transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         }
 
         .skill-badge-card.animate-skill-in {
           opacity: 1;
-          transform: translateY(0) scale(1);
+          transform: translateY(0);
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .skill-badge-card {
+          .skill-badge-card, .animate-fadeIn {
             opacity: 1 !important;
             transform: none !important;
             transition: none !important;
+            animation: none !important;
           }
         }
       `}</style>
