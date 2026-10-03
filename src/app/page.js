@@ -57,21 +57,21 @@ export default function Page() {
       <div className="section-perf">
         <ExperienceSection />
       </div>
-      <div className="section-perf">
+      {/* <div className="section-perf">
         <EducationSection />
-      </div>
+      </div> */}
       <div className="section-perf">
         <ProjectsSection />
       </div>
       <div className="section-perf">
         <ServicesSection />
       </div>
-      <div className="section-perf">
+      {/* <div className="section-perf">
         <CurrentFocusSection />
       </div>
       <div className="section-perf">
         <TimelineSection />
-      </div>
+      </div> */}
       <div className="section-perf">
         <ContactSection />
       </div>

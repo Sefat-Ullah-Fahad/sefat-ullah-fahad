@@ -179,7 +179,7 @@ export default function CurrentFocusSection() {
         {/* Development Lifecycle & Approach */}
         <div className="mb-24">
           <h3 className="text-xl font-display font-bold text-white mb-8 flex items-center gap-2.5">
-            <span className="w-3 h-3 rounded-full bg-pink-500 shadow-[0_0_12px_#EC4899]" />
+            <span className="w-3 h-3 rounded-full bg-pink-500 shadow-[0_0_12px_var(--brand-sage)]" />
             <span>Development Lifecycle & Approach</span>
           </h3>
 
@@ -241,7 +241,7 @@ export default function CurrentFocusSection() {
           {/* Left Column: First 2 Cards */}
           <div className="lg:col-span-7 space-y-6">
             <h3 className="text-xl font-display font-bold text-white mb-4 flex items-center gap-2.5">
-              <span className="w-3 h-3 rounded-full bg-pink-500 shadow-[0_0_12px_#EC4899]" />
+              <span className="w-3 h-3 rounded-full bg-pink-500 shadow-[0_0_12px_var(--brand-sage)]" />
               <span>Active Deep Dives & Engineering Frontiers</span>
             </h3>
 
@@ -294,7 +294,7 @@ export default function CurrentFocusSection() {
           {/* Right Column: Language Proficiency */}
           <div className="lg:col-span-5 space-y-6">
             <h3 className="text-xl font-display font-bold text-white mb-4 flex items-center gap-2.5">
-              <span className="w-3 h-3 rounded-full bg-purple-500 shadow-[0_0_12px_#8B5CF6]" />
+              <span className="w-3 h-3 rounded-full bg-purple-500 shadow-[0_0_12px_var(--brand-blue-muted)]" />
               <span>Language Proficiency</span>
             </h3>
 

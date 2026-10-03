@@ -80,10 +80,10 @@ export default function EducationSection() {
       className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden backdrop-blur-[3px]"
     >
       <div className="absolute inset-0 bg-constellation opacity-35 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(var(--brand-blue-rgb),0.05)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#5B21B6]/15 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-[#DB2777]/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-brand-blue/15 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-brand-sage-dark/15 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -108,13 +108,13 @@ export default function EducationSection() {
           {educationData.map((edu) => (
             <div key={edu.id} className="edu-card-wrapper relative">
               
-              <div className="absolute -left-[35px] sm:-left-[51px] top-6 w-5 h-5 rounded-full bg-slate-950 border-2 border-pink-500 flex items-center justify-center shadow-[0_0_15px_rgba(236,72,153,0.5)] z-20">
+              <div className="absolute -left-[35px] sm:-left-[51px] top-6 w-5 h-5 rounded-full bg-slate-950 border-2 border-pink-500 flex items-center justify-center shadow-[0_0_15px_rgba(var(--brand-sage-rgb),0.5)] z-20">
                 <div className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
               </div>
 
               <div className="absolute top-8 -left-6 sm:-left-10 w-6 sm:w-10 h-0.5 bg-gradient-to-r from-purple-500/40 to-transparent pointer-events-none" />
 
-              <div className="relative rounded-3xl bg-slate-950/85 border border-purple-500/30 p-6 sm:p-10 backdrop-blur-xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-pink-500/60 hover:shadow-[0_0_30px_rgba(236,72,153,0.15)] group">
+              <div className="relative rounded-3xl bg-slate-950/85 border border-purple-500/30 p-6 sm:p-10 backdrop-blur-xl overflow-hidden shadow-2xl transition-all duration-300 hover:border-pink-500/60 hover:shadow-[0_0_30px_rgba(var(--brand-sage-rgb),0.15)] group">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-purple-500/10 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50" />
 
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">

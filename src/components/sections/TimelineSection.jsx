@@ -95,8 +95,8 @@ export default function TimelineSection() {
       className="relative py-24 lg:py-32 bg-background/85 border-t border-slate-900 overflow-hidden"
     >
       {/* bg-fixed removed — was forcing a full repaint on every scroll frame on mobile */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(59,130,246,0.45)_1.5px,transparent_1.5px)] bg-[size:28px_28px] pointer-events-none opacity-60" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.1)_0%,transparent_75%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(var(--brand-blue-rgb),0.45)_1.5px,transparent_1.5px)] bg-[size:28px_28px] pointer-events-none opacity-60" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(var(--brand-blue-rgb),0.1)_0%,transparent_75%)] pointer-events-none" />
 
       {/* Blur blobs: smaller radius + narrower blur on mobile, full size from sm breakpoint up */}
       <div className="absolute top-1/3 left-1/4 w-[280px] h-[280px] sm:w-[500px] sm:h-[500px] bg-blue-600/15 rounded-full blur-[70px] sm:blur-[160px] pointer-events-none" />
@@ -134,7 +134,7 @@ export default function TimelineSection() {
                   transitionDelay: `${idx * 0.08}s`
                 }}
               >
-                <div className="absolute -left-[35px] sm:-left-[51px] top-1.5 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-slate-950 border-2 border-pink-500 flex items-center justify-center shadow-[0_0_15px_#EC4899] group-hover:scale-110 transition-transform">
+                <div className="absolute -left-[35px] sm:-left-[51px] top-1.5 w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-slate-950 border-2 border-pink-500 flex items-center justify-center shadow-[0_0_15px_var(--brand-sage)] group-hover:scale-110 transition-transform">
                   <HiOutlineCalendarDays className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-400" />
                 </div>
 

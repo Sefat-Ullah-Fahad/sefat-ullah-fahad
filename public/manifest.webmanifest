@@ -4,8 +4,6 @@
   "description": "Portfolio of Sefat Ullah Fahad — Full Stack Developer from Rajshahi, Bangladesh. Next.js, React, Node.js, MERN.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#07090e",
-  "theme_color": "#07090e",
   "lang": "en",
   "icons": [
     {

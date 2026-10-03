@@ -9,42 +9,8 @@ export default function ClientLayout({ children }) {
   const handleComplete = useCallback(() => setShowPreloader(false), []);
 
   useEffect(() => {
-    let cancelled = false;
-
-    const waitForImages = () =>
-      Promise.all(
-        Array.from(document.images)
-          .filter((image) => image.loading !== "lazy")
-          .map((image) => {
-            if (image.complete) return Promise.resolve();
-
-            return new Promise((resolve) => {
-              image.addEventListener("load", resolve, { once: true });
-              image.addEventListener("error", resolve, { once: true });
-            });
-          }),
-      );
-
-    const waitForPage = async () => {
-      if (document.readyState !== "complete") {
-        await new Promise((resolve) => {
-          window.addEventListener("load", resolve, { once: true });
-        });
-      }
-
-      await Promise.all([
-        waitForImages(),
-        document.fonts?.ready ?? Promise.resolve(),
-      ]);
-
-      if (!cancelled) setIsPageReady(true);
-    };
-
-    waitForPage();
-
-    return () => {
-      cancelled = true;
-    };
+    const frame = window.requestAnimationFrame(() => setIsPageReady(true));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   return (

@@ -34,7 +34,7 @@ const description =
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  generator: 'WordPress 6.4',
+  generator: 'Next.js',
 
   title: {
     default: titleDefault,
@@ -140,7 +140,6 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#07090e',
 };
 
 const personJsonLd = {
@@ -239,6 +238,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
+        suppressHydrationWarning
         className={`${gelasio.className} ${gelasio.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased min-h-screen overflow-x-hidden`}
       >
         <a

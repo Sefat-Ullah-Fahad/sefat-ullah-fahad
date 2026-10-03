@@ -6,8 +6,8 @@ const nextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
   images: {
-    unoptimized: true,
-    formats: ['image/avif', 'image/webp'],
+    loader: 'custom',
+    loaderFile: './src/lib/cloudinaryLoader.js',
     remotePatterns: [
       {
         protocol: 'https',

@@ -1,14 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Dancing_Script } from "next/font/google";
-
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["700"],
-  display: "swap",
-  preload: true,
-});
 
 export default function Preloader({ isReady, onComplete }) {
   const [isFading, setIsFading] = useState(false);
@@ -75,7 +67,7 @@ export default function Preloader({ isReady, onComplete }) {
 
         .stroke-text {
           fill: none;
-          stroke: #f7f7f7;
+          stroke: var(--brand-white);
           stroke-width: 2.5;
           stroke-linejoin: round;
           stroke-linecap: round;
@@ -132,7 +124,7 @@ export default function Preloader({ isReady, onComplete }) {
         }
       `}</style>
 
-      <div className={`loader-wrap ${dancingScript.className}`}>
+      <div className="loader-wrap font-display">
         <svg
           viewBox="0 0 700 150"
           xmlns="http://www.w3.org/2000/svg"

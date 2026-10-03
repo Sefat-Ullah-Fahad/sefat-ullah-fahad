@@ -1,33 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07090e;
-  --foreground: #e2e8f0;
-  --surface: #0d1117;
-  --surface-footer: #05070a;
+  --brand-white: #ffffff;
+  --brand-black: #000000;
+  --brand-cream: #fbf9f2;
+  --brand-surface: #f6f8f4;
+  --brand-surface-sage: #edf1e9;
+  --brand-blue: #456c8c;
+  --brand-blue-dark: #263d50;
+  --brand-blue-deep: #294b65;
+  --brand-blue-mid: #355570;
+  --brand-blue-muted: #526d82;
+  --brand-blue-soft: #617587;
+  --brand-sage: #8ca27e;
+  --brand-sage-dark: #536b49;
+  --brand-sage-light: #c6d5b8;
+  --brand-sage-pale: #d7e0c7;
+  --brand-ice: #d7e0e8;
+  --brand-ice-light: #e1e9ed;
+  --brand-olive: #808000;
+  --brand-danger: #9f2d25;
+  --brand-danger-surface: #fdefed;
+  --brand-linkedin: #0a66c2;
 
-  /* Base Hex Colors */
-  --brand-purple: #5b21b6;
-  --brand-purple-hover: #6d28d9;
-  --brand-purple-light: #7c3aed;
-  --brand-purple-violet: #8b5cf6;
-  --brand-purple-soft: #a78bfa;
-  --brand-purple-pale: #c4b5fd;
-  --brand-purple-mid: #a855f7; /* Added for selection bg */
-
-  --brand-pink: #db2777;
-  --brand-pink-hot: #ec4899;
-  --brand-pink-light: #f472b6;
-  --brand-pink-rose: #e11d48;
-  --brand-pink-fill: #d4537e;
-  --brand-pink-pale: #f9a8d4;
-  --brand-rose: #f43f5e; /* Added for scrollbar hover */
-
-  /* RGB Colors for Animations with Opacity */
-  --brand-purple-rgb: 91, 33, 182;
-  --brand-pink-rgb: 219, 39, 119;
+  --brand-blue-rgb: 69, 108, 140;
+  --brand-blue-dark-rgb: 38, 61, 80;
+  --brand-sage-rgb: 140, 162, 126;
+  --brand-cream-rgb: 251, 249, 242;
   --brand-white-rgb: 255, 255, 255;
-  --brand-purple-mid-rgb: 168, 85, 247;
+  --brand-black-rgb: 0, 0, 0;
+  --brand-linkedin-rgb: 10, 102, 194;
+
+  --background: var(--brand-blue-dark);
+  --foreground: var(--brand-cream);
+  --surface: var(--brand-blue-deep);
+  --surface-footer: var(--brand-blue-dark);
+
+  --brand-purple: var(--brand-blue);
+  --brand-purple-hover: var(--brand-blue-mid);
+  --brand-purple-light: var(--brand-blue);
+  --brand-purple-violet: var(--brand-blue-muted);
+  --brand-purple-soft: var(--brand-sage-light);
+  --brand-purple-pale: var(--brand-cream);
+  --brand-purple-mid: var(--brand-sage);
+  --brand-pink: var(--brand-sage);
+  --brand-pink-hot: var(--brand-sage-dark);
+  --brand-pink-light: var(--brand-sage-light);
+  --brand-pink-rose: var(--brand-blue-mid);
+  --brand-pink-fill: var(--brand-sage);
+  --brand-pink-pale: var(--brand-sage-pale);
+  --brand-rose: var(--brand-danger);
+  --brand-purple-rgb: var(--brand-blue-rgb);
+  --brand-pink-rgb: var(--brand-sage-rgb);
+  --brand-purple-mid-rgb: var(--brand-sage-rgb);
 
   /* Gradients Using Global Variables */
   --gradient-brand: linear-gradient(
@@ -55,11 +80,9 @@
     var(--brand-pink) 100%
   );
   --gradient-text-glow: linear-gradient(
-    135deg,
-    var(--brand-purple-pale) 0%,
-    var(--brand-purple-soft) 40%,
-    var(--brand-pink) 85%,
-    var(--brand-pink-light) 100%
+    120deg,
+    var(--brand-blue) 0%,
+    var(--brand-black) 100%
   );
   --gradient-preloader: linear-gradient(
     to right,
@@ -91,6 +114,51 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-footer: var(--surface-footer);
+  --color-brand-white: var(--brand-white);
+  --color-brand-black: var(--brand-black);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-sage: var(--brand-surface-sage);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-dark: var(--brand-blue-dark);
+  --color-brand-blue-deep: var(--brand-blue-deep);
+  --color-brand-blue-mid: var(--brand-blue-mid);
+  --color-brand-blue-muted: var(--brand-blue-muted);
+  --color-brand-blue-soft: var(--brand-blue-soft);
+  --color-brand-sage: var(--brand-sage);
+  --color-brand-sage-dark: var(--brand-sage-dark);
+  --color-brand-sage-light: var(--brand-sage-light);
+  --color-brand-sage-pale: var(--brand-sage-pale);
+  --color-brand-ice: var(--brand-ice);
+  --color-brand-ice-light: var(--brand-ice-light);
+  --color-brand-olive: var(--brand-olive);
+  --color-brand-danger: var(--brand-danger);
+  --color-brand-danger-surface: var(--brand-danger-surface);
+  --color-brand-linkedin: var(--brand-linkedin);
+  --color-white: var(--brand-white);
+  --color-black: var(--brand-black);
+
+  --color-purple-300: var(--brand-sage-light);
+  --color-purple-400: var(--brand-blue-muted);
+  --color-purple-500: var(--brand-blue);
+  --color-purple-600: var(--brand-blue-mid);
+  --color-purple-950: var(--brand-blue-dark);
+  --color-pink-200: var(--brand-ice);
+  --color-pink-300: var(--brand-sage-pale);
+  --color-pink-400: var(--brand-sage);
+  --color-pink-500: var(--brand-sage-dark);
+  --color-pink-600: var(--brand-sage-dark);
+  --color-slate-300: var(--brand-ice);
+  --color-slate-400: var(--brand-blue-muted);
+  --color-slate-500: var(--brand-blue-soft);
+  --color-slate-700: var(--brand-blue-muted);
+  --color-slate-800: var(--brand-blue-deep);
+  --color-slate-900: var(--brand-blue-dark);
+  --color-slate-950: var(--brand-blue-dark);
+  --color-blue-600: var(--brand-blue);
+  --color-rose-50: var(--brand-danger-surface);
+  --color-rose-200: var(--brand-danger);
+  --color-rose-800: var(--brand-danger);
   --color-brand-purple: var(--brand-purple);
   --color-brand-purple-hover: var(--brand-purple-hover);
   --color-brand-purple-light: var(--brand-purple-light);
@@ -352,12 +420,43 @@
   background-clip: text;
 }
 
-.text-brand-gradient-glow {
-  background: var(--gradient-text-glow);
-  -webkit-background-clip: text;
+.text-brand-gradient-glow,
+.hero-name-gradient {
+  color: transparent;
+  background: none;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 16px rgba(var(--brand-pink-rgb), 0.45));
+  -webkit-text-stroke: 1.5px var(--brand-sage);
+  filter: none;
+}
+
+.hero-grid-pattern {
+  overflow: hidden;
+}
+
+.hero-grid-pattern::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  background-size: 48px 48px;
+  background-image:
+    linear-gradient(to right, rgba(var(--brand-blue-rgb), 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--brand-sage-rgb), 0.16) 1px, transparent 1px);
+  animation: gridDriftT 28s linear infinite;
+}
+
+.about-grid-pattern {
+  overflow: hidden;
+}
+
+.about-grid-pattern::before {
+  content: '';
+  position: absolute;
+  inset: -80px;
+  background-size: 56px 56px;
+  background-image:
+    linear-gradient(to right, rgba(var(--brand-white-rgb), 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--brand-sage-rgb), 0.12) 1px, transparent 1px);
+  animation: gridDriftReverseT 36s linear infinite;
 }
 
 .border-brand-gradient {
