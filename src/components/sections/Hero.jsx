@@ -80,7 +80,7 @@ export default function Hero() {
     >
       {/* Background Ornaments */}
       <div
-        className="hero-grid-pattern absolute inset-0 opacity-50 pointer-events-none"
+        className="hero-grid-pattern absolute inset-0 opacity-100 pointer-events-none"
         aria-hidden="true"
       />
 
@@ -103,10 +103,10 @@ export default function Hero() {
               className="hero-animate-text space-y-1 mb-3"
               style={{ animationDelay: "0.1s" }}
             >
-              <span className="font-mono text-xs sm:text-sm text-brand-blue tracking-wider uppercase font-semibold flex items-center gap-2">
+              {/* <span className="font-mono text-xs sm:text-sm text-brand-blue tracking-wider uppercase font-semibold flex items-center gap-2">
                 <HiOutlineSparkles className="w-4 h-4 text-brand-sage" />
                 <span>Full-Stack Portfolio of</span>
-              </span>
+              </span> */}
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-brand-blue-dark leading-[1.08]">
                 Sefat Ullah <br className="hidden sm:block" />
                 <span className="hero-name-gradient font-black">Fahad</span>
