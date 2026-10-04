@@ -76,7 +76,7 @@ export default function Hero() {
     <section
       id="hero"
       aria-label="Hero Section"
-      className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center justify-center overflow-hidden hero-section-container bg-white text-brand-blue"
+      className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center justify-center overflow-hidden hero-section-container bg-gray-300 text-brand-blue"
     >
       {/* Background Ornaments */}
       <div
@@ -125,9 +125,9 @@ export default function Hero() {
               <h2 className="text-lg sm:text-xl font-mono font-semibold text-brand-blue tracking-tight">
                 {heroSectionData.title}
               </h2>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-brand-sage/15 border border-brand-sage/45 text-brand-blue font-mono">
+              {/* <span className="text-xs px-2.5 py-0.5 rounded-full bg-brand-sage/15 border border-brand-sage/45 text-brand-blue font-mono">
                 Software & Financial Accounting
-              </span>
+              </span> */}
             </div>
 
             <div
@@ -137,7 +137,7 @@ export default function Hero() {
               <p className="font-medium text-brand-blue-dark">
                 {heroSectionData.heroIntro}
               </p>
-              <p className="text-sm sm:text-base text-brand-blue-soft leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-brand-black leading-relaxed font-normal">
                 {heroSectionData.heroSubIntro}
               </p>
             </div>
