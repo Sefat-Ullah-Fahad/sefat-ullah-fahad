@@ -221,7 +221,7 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className={`service-bento-card group relative rounded-[2rem] border border-brand-sage/35 hover:border-brand-blue/50 p-8 flex flex-col justify-between overflow-hidden shadow-lg shadow-brand-blue/10 hover:shadow-xl hover:shadow-brand-blue/15 transition-all duration-500 hover:-translate-y-2 ${spanClass}`}
+                className={`service-bento-card group relative rounded-[2rem] border border-brand-sage/35 hover:border-brand-blue/50 p-8 flex flex-col justify-between overflow-hidden shadow-lg shadow-brand-blue/10 hover:shadow-xl hover:shadow-brand-blue/15 transition-all duration-500 ${spanClass}`}
               >
                 <div className="absolute inset-0 bg-brand-surface transition-transform duration-700 group-hover:scale-105 z-0">
                   <div className="service-card-reveal absolute -top-[200px] -right-[200px] h-[400px] w-[400px] rounded-full bg-brand-sage/25 transition-transform duration-700 ease-out group-hover:scale-[4]" />
@@ -298,6 +298,10 @@ export default function ServicesSection() {
             transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
             border-color 0.5s,
             box-shadow 0.5s;
+        }
+
+        .service-bento-card.animate-service-in:hover {
+          transform: translateY(-8px) scale(1);
         }
 
         .service-bento-card.animate-service-in {

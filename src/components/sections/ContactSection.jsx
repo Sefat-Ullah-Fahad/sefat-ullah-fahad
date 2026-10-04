@@ -247,9 +247,9 @@ export default function ContactSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${social.name} Profile`}
-                        className="btn-shimmer flex items-center gap-2 px-3.5 py-2 rounded-xl bg-brand-surface-sage border border-brand-blue/15 hover:border-brand-sage text-brand-blue-mid hover:text-brand-blue-dark text-sm font-mono transition-all duration-300 hover:scale-105 cursor-pointer"
+                        className="btn-shimmer flex items-center gap-2 px-3.5 py-2 rounded-xl bg-brand-blue-dark border border-brand-blue/15 hover:border-brand-sage hover:bg-brand-sage text-brand-cream hover:text-brand-blue-dark text-sm font-mono transition-all duration-300 hover:scale-105 cursor-pointer"
                       >
-                        <Icon className="w-3.5 h-3.5 text-brand-sage-dark" />
+                        <Icon className="w-3.5 h-3.5 text-brand-sage-pale" />
                         <span>{social.name}</span>
                       </a>
                     );
