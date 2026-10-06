@@ -28,9 +28,13 @@ const siteUrl = 'https://sefat-ullah-fahad.web.app';
 const profileImage =
   'https://res.cloudinary.com/dsga4gyw9/image/upload/f_auto,q_auto,w_1200/v1786959761/sefat-ullah-fahad_fdxwuu.jpg';
 
-const titleDefault = 'Sefat Ullah Fahad | Full Stack Developer';
-const description =
-  'Sefat Ullah Fahad (সেফাত উল্লাহ ফাহাদ) — Full Stack Developer from Rajshahi, Bangladesh. Building fast, scalable web apps with Next.js, React, Node.js, Express, MongoDB & Supabase.';
+// Official name (matches registered document, without "MD")
+const fullName = 'Sefatullah Fahad';
+const fullNameBn = 'ছিফাতউল্লাহ ফাহাদ';
+const nameVariants = ['Sefat Ullah Fahad', fullNameBn];
+
+const titleDefault = `${fullName} | Full Stack Developer`;
+const description = `${fullName} (${fullNameBn}) — Full Stack Developer from Rajshahi, Bangladesh. Building fast, scalable web apps with Next.js, React, Node.js, Express, MongoDB & Supabase.`;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -38,19 +42,17 @@ export const metadata = {
 
   title: {
     default: titleDefault,
-    template: '%s | Sefat Ullah Fahad',
+    template: `%s | ${fullName}`,
   },
 
   description,
 
   keywords: [
+    fullName,
     'Sefat Ullah Fahad',
-    'sefat ullah fahad',
-    'Sefatullah Fahad',
-    'Md Sefat Ullah Fahad',
-    'সেফাত উল্লাহ ফাহাদ',
-    'Sefat Ullah Fahad portfolio',
-    'Sefat Ullah Fahad developer',
+    fullNameBn,
+    `${fullName} portfolio`,
+    `${fullName} developer`,
     'Full Stack Developer',
     'Full Stack Developer Bangladesh',
     'Full Stack Developer Rajshahi',
@@ -64,9 +66,9 @@ export const metadata = {
     'Experivia',
   ],
 
-  authors: [{ name: 'Sefat Ullah Fahad', url: siteUrl }],
-  creator: 'Sefat Ullah Fahad',
-  publisher: 'Sefat Ullah Fahad',
+  authors: [{ name: fullName, url: siteUrl }],
+  creator: fullName,
+  publisher: fullName,
 
   verification: {
     google: 'x600XH1dDq7PeweseUznfpexDsfaMqiI_JkszWL88N8',
@@ -76,18 +78,18 @@ export const metadata = {
     type: 'profile',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Sefat Ullah Fahad',
+    siteName: fullName,
     title: titleDefault,
     description,
-    firstName: 'Sefat Ullah',
+    firstName: 'Sefatullah',
     lastName: 'Fahad',
-    username: 'sefat-ullah-fahad',
+    username: 'sefatullahfahad',
     images: [
       {
         url: profileImage,
         width: 1200,
         height: 630,
-        alt: 'Sefat Ullah Fahad - Full Stack Developer',
+        alt: `${fullName} - Full Stack Developer`,
       },
     ],
   },
@@ -128,7 +130,7 @@ export const metadata = {
   manifest: '/manifest.webmanifest',
 
   category: 'technology',
-  applicationName: 'Sefat Ullah Fahad Portfolio',
+  applicationName: `${fullName} Portfolio`,
   referrer: 'origin-when-cross-origin',
   formatDetection: {
     email: false,
@@ -149,13 +151,8 @@ const personJsonLd = {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
       url: siteUrl,
-      name: 'Sefat Ullah Fahad',
-      alternateName: [
-        'sefat ullah fahad',
-        'Sefatullah Fahad',
-        'Md Sefat Ullah Fahad',
-        'সেফাত উল্লাহ ফাহাদ',
-      ],
+      name: fullName,
+      alternateName: nameVariants,
       description,
       inLanguage: 'en',
       publisher: { '@id': `${siteUrl}/#person` },
@@ -163,13 +160,10 @@ const personJsonLd = {
     {
       '@type': 'Person',
       '@id': `${siteUrl}/#person`,
-      name: 'Sefat Ullah Fahad',
-      alternateName: [
-        'sefat ullah fahad',
-        'Sefatullah Fahad',
-        'Md Sefat Ullah Fahad',
-        'সেফাত উল্লাহ ফাহাদ',
-      ],
+      name: fullName,
+      givenName: 'Sefatullah',
+      familyName: 'Fahad',
+      alternateName: nameVariants,
       jobTitle: 'Full Stack Developer',
       description,
       url: siteUrl,
@@ -182,9 +176,12 @@ const personJsonLd = {
       },
       sameAs: [
         'https://www.linkedin.com/in/sefat-ullah-fahad/',
+        'https://github.com/Sefat-Ullah-Fahad', // verify: or sefatullahfahad
+        'https://medium.com/@sefatullahfahad',
+        'https://dev.to/sefat-ullah-fahad',
+        'https://x.com/sefatullahfahad',
         'https://www.facebook.com/sefat.ullah.fahad',
-        'https://www.instagram.com/sifatullahfahad/',
-        'https://github.com/Sefat-Ullah-Fahad',
+        'https://www.instagram.com/sefatullahfahad/',
       ],
       knowsAbout: [
         'Next.js',
