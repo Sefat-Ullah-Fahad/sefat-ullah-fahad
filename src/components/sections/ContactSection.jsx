@@ -25,8 +25,8 @@ const personalInfo = {
   phone: "01943850789",
   status: "Available for selected opportunities",
   socialLinks: [
-    { name: "LinkedIn", url: "https://linkedin.com/in/sefatullahfahad" },
-    { name: "GitHub", url: "https://github.com/sefatullahfahad" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/sefat-ullah-fahad/" },
+    { name: "GitHub", url: "https://github.com/Sefat-Ullah-Fahad" },
     { name: "Facebook", url: "https://facebook.com/sefatullahfahad" },
     { name: "Instagram", url: "https://instagram.com/sefatullahfahad" },
     { name: "Discord", url: "https://discord.com/users/fahad_5562" },
