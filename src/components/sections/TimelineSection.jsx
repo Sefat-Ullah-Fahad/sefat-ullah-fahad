@@ -108,7 +108,7 @@ export default function TimelineSection() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="font-mono text-xs text-pink-400 font-semibold uppercase tracking-wider">
-                10 // Career Progression
+                Career Progression
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
