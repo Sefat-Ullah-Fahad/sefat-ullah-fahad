@@ -123,7 +123,7 @@ export default function ProjectsSection() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="font-mono text-xs text-brand-sage-pale font-semibold uppercase tracking-wider">
-                06 // Featured Work
+                Featured Work
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-brand-cream tracking-tight">
