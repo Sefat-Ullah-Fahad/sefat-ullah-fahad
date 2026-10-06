@@ -109,7 +109,7 @@ export default function ExperienceSection() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="font-mono text-xs text-brand-olive font-bold uppercase tracking-wider">
-                04 // Professional History
+                Professional History
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-brand-blue tracking-tight">
