@@ -63,7 +63,7 @@ export const metadata = {
     'Web Developer Rajshahi',
     'Frontend Developer',
     'Backend Developer',
-    'Experivia',
+    'Exprovia',
   ],
 
   authors: [{ name: fullName, url: siteUrl }],
