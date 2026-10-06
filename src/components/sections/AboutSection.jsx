@@ -10,7 +10,7 @@ import {
 } from "react-icons/hi2";
 
 const aboutSectionData = {
-  sectionNumber: "02 // Philosophy & Background",
+  sectionNumber: "Philosophy & Background",
   heading: "About",
   headingHighlight: "Me",
   subtitleBadge: "Bridging analytical precision with modern web architecture.",

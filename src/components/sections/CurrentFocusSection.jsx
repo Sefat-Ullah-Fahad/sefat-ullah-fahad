@@ -163,7 +163,7 @@ export default function CurrentFocusSection() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="font-mono text-xs text-pink-400 font-semibold uppercase tracking-wider">
-                09 // Continuous Evolution & Process
+                Continuous Evolution & Process
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">

@@ -158,7 +158,7 @@ export default function ContactSection() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="font-mono text-sm text-brand-sage-dark font-semibold uppercase tracking-wider">
-                11 // Connect & Collaborate
+                Connect & Collaborate
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-brand-blue-dark tracking-tight">
